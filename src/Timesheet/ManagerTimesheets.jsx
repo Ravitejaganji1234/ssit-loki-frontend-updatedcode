@@ -32,10 +32,10 @@ const ManagerTimesheets = () => {
     if (!managerId) return; // Prevent API call if no managerId is found
 
     try {
-      let url = `https://harhsa-backend.azurewebsites.net/api/timesheets/list/manager/${managerId}`;
+      let url = `https://ssit-timesheet-backend.azurewebsites.net/api/timesheets/list/manager/${managerId}`;
         
       if (startDate && endDate) {
-        url = `https://harhsa-backend.azurewebsites.net/api/timesheets/totalList/employeeId/${employeeId}/startDate/${startDate}/endDate/${endDate}`;
+        url = `https://ssit-timesheet-backend.azurewebsites.net/api/timesheets/totalList/employeeId/${employeeId}/startDate/${startDate}/endDate/${endDate}`;
       }
 
       const response = await axios.get(url);
@@ -84,7 +84,7 @@ const ManagerTimesheets = () => {
   const handleApprove = async (id) => {
     setLoading(true);
     try {
-      await axios.put(`https://harhsa-backend.azurewebsites.net/api/timesheets/Approve/${id}/status/APPROVED`);
+      await axios.put(`https://ssit-timesheet-backend.azurewebsites.net/api/timesheets/Approve/${id}/status/APPROVED`);
       fetchSubmissions();
     } catch (error) {
       console.error("Error approving timesheet:", error);
@@ -96,7 +96,7 @@ const ManagerTimesheets = () => {
   const handleReject = async () => {
     setLoading(true);
     try {
-      await axios.put(`https://harhsa-backend.azurewebsites.net/api/timesheets/reject/${currentId}/status/REJECTED/comments/${comments}`);
+      await axios.put(`https://ssit-timesheet-backend.azurewebsites.net/api/timesheets/reject/${currentId}/status/REJECTED/comments/${comments}`);
       fetchSubmissions();
       handleClose();
     } catch (error) {

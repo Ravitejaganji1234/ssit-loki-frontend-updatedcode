@@ -102,9 +102,9 @@ function LeaveRequestForm(props) {
         }
  
         // Validation: Check for valid email
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|middlewaretalents\.com)$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|ssitcloud\.com)$/;
         if (!emailPattern.test(formData.email)) {
-            setLeaveError('Please enter a valid email address from @gmail.com or @middlewaretalents.com');
+            setLeaveError('Please enter a valid email address from @gmail.com or @ssitcloud.com');
             setErrors(true);
             return;
         }
@@ -147,8 +147,8 @@ requiredFields.forEach(field => {
         try {
             console.log(formData);
             const url = isEditing
-                ? `https://naveen-module.azurewebsites.net/api/leave/update/${formData.id}`
-                : `https://naveen-module.azurewebsites.net/api/leave/submit`;
+                ? `https://ssit-leaves-backend.azurewebsites.net/api/leave/update/${formData.id}`
+                : `https://ssit-leaves-backend.azurewebsites.net/api/leave/submit`;
             let response;
             if (!isEditing) {
                 console.log("POST Request:", formData);
@@ -203,7 +203,7 @@ requiredFields.forEach(field => {
  
     const fetchRemainingLeaveDays = async (employeeId, leaveType) => {
         try {
-            const response = await axios.get('https://naveen-module.azurewebsites.net/api/leave/remaining-leaves', {
+            const response = await axios.get('https://ssit-leaves-backend.azurewebsites.net/api/leave/remaining-leaves', {
                 params: { employeeId, leaveType }
             });
             setRemainingLeaveDays(response.data); // Set the remaining leave days in state

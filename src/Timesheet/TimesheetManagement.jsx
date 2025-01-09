@@ -118,7 +118,7 @@ const TimesheetManagement = ({ setSubmissions ,employeeId}) => {
             console.log("Fetching data with token:", token);  // Log token for debugging
             
             const response = await axios.get(
-                `https://talents-backend.azurewebsites.net/api/v1/employeeManager/getEmployee/${employeeId}`,
+                `https://ssit-timesheet-backend.azurewebsites.net/api/v1/employeeManager/getEmployee/${employeeId}`,
                 {
                     method: 'GET',
                     headers: {
